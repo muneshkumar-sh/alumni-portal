@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Applications</title>
+
+    <style>
+
+        /* =========================
+           General
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background: #f1f5f9;
+
+            color: #1e293b;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1000px;
+
+            margin: 40px auto;
+        }
+
+
+        /* =========================
+           Page Header
+        ========================= */
+
+        .page-header {
+            background: white;
+
+            padding: 25px 30px;
+
+            border-radius: 12px;
+
+            margin-bottom: 25px;
+
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+
+            text-align: center;
+        }
+
+        .page-header h1 {
+            margin: 0 0 8px 0;
+
+            color: #1e3a8a;
+
+            font-size: 28px;
+        }
+
+        .page-header p {
+            margin: 0;
+
+            color: #64748b;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           Application Card
+        ========================= */
+
+        .application-card {
+            background: white;
+
+            padding: 25px;
+
+            margin-bottom: 20px;
+
+            border-radius: 12px;
+
+            border-left: 5px solid #2563eb;
+
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .application-card h2 {
+            margin: 0 0 20px 0;
+
+            color: #1e3a8a;
+
+            font-size: 21px;
+        }
+
+        .application-info {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+        }
+
+        .info-box {
+            background: #f8fafc;
+
+            border: 1px solid #e2e8f0;
+
+            padding: 13px 15px;
+
+            border-radius: 7px;
+        }
+
+        .info-box strong {
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #475569;
+
+            font-size: 13px;
+        }
+
+        .info-box span {
+            color: #1e293b;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           Status
+        ========================= */
+
+        .status {
+            display: inline-block;
+
+            padding: 5px 12px;
+
+            border-radius: 20px;
+
+            background: #dbeafe;
+
+            color: #1d4ed8;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           Empty Applications
+        ========================= */
+
+        .empty-message {
+            background: white;
+
+            padding: 45px 25px;
+
+            text-align: center;
+
+            border-radius: 12px;
+
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+
+            color: #64748b;
+        }
+
+
+        /* =========================
+           Navigation
+        ========================= */
+
+        .navigation-links {
+            margin-top: 30px;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .navigation-links a {
+            display: inline-block;
+
+            padding: 11px 18px;
+
+            background: #2563eb;
+
+            color: white;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+        .navigation-links a:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* =========================
+           Footer
+        ========================= */
+
+        .footer {
+            text-align: center;
+
+            margin-top: 40px;
+
+            padding: 20px;
+
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           Responsive
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .container {
+                width: 95%;
+
+                margin: 20px auto;
+            }
+
+            .application-card {
+                padding: 20px;
+            }
+
+            .application-info {
+                grid-template-columns: 1fr;
+            }
+
+            .navigation-links {
+                flex-direction: column;
+            }
+
+            .navigation-links a {
+                text-align: center;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+
+        <!-- Page Header -->
+
+        <div class="page-header">
+
+            <h1>
+                My Applications
+            </h1>
+
+            <p>
+                View the jobs you have applied for
+            </p>
+
+        </div>
+
+
+        <% if (applications.length === 0) { %>
+
+
+            <!-- No Applications -->
+
+            <div class="empty-message">
+
+                <h2>
+                    No Applications Yet
+                </h2>
+
+                <p>
+                    You have not applied for any jobs yet.
+                </p>
+
+                <p>
+                    Browse available jobs and submit your first application.
+                </p>
+
+            </div>
+
+
+        <% } else { %>
+
+
+            <!-- Applications -->
+
+            <% applications.forEach(application => { %>
+
+
+                <div class="application-card">
+
+
+                    <h2>
+                        <%= application.title %>
+                    </h2>
+
+
+                    <div class="application-info">
+
+
+                        <div class="info-box">
+
+                            <strong>
+                                Company
+                            </strong>
+
+                            <span>
+                                <%= application.company %>
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <strong>
+                                Location
+                            </strong>
+
+                            <span>
+                                <%= application.location || "Not specified" %>
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <strong>
+                                Job Type
+                            </strong>
+
+                            <span>
+                                <%= application.job_type || "Not specified" %>
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <strong>
+                                Application Status
+                            </strong>
+
+                            <span>
+
+                                <span class="status">
+                                    <%= application.status %>
+                                </span>
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <strong>
+                                Applied On
+                            </strong>
+
+                            <span>
+                                <%= new Date(application.applied_at).toLocaleString() %>
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            <% }) %>
+
+
+        <% } %>
+
+
+        <!-- Navigation -->
+
+        <div class="navigation-links">
+
+            <a href="/jobs">
+                Back to Jobs
+            </a>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+        </div>
+
+
+        <!-- Footer -->
+
+        <footer class="footer">
+
+            <p>
+                Alumni Portal © 2026
+            </p>
+
+        </footer>
+
+
+    </div>
+
+</body>
+
+</html>

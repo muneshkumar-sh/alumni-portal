@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Profile</title>
+
+    <style>
+
+        /* =========================
+           General
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background: #f1f5f9;
+
+            color: #1e293b;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 850px;
+
+            margin: 40px auto;
+        }
+
+
+        /* =========================
+           Header
+        ========================= */
+
+        .header {
+            background: white;
+
+            padding: 25px 30px;
+
+            border-radius: 12px;
+
+            margin-bottom: 25px;
+
+            text-align: center;
+
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .header h1 {
+            margin: 0 0 8px 0;
+
+            color: #1e3a8a;
+
+            font-size: 28px;
+        }
+
+        .header p {
+            margin: 0;
+
+            color: #64748b;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           Form
+        ========================= */
+
+        form {
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* =========================
+           Section Headings
+        ========================= */
+
+        form h2 {
+            margin: 30px 0 20px 0;
+
+            padding-bottom: 10px;
+
+            border-bottom: 2px solid #e2e8f0;
+
+            color: #1e3a8a;
+
+            font-size: 20px;
+        }
+
+        form h2:first-child {
+            margin-top: 0;
+        }
+
+
+        /* =========================
+           Labels
+        ========================= */
+
+        form > label {
+            display: block;
+
+            margin-top: 15px;
+            margin-bottom: 7px;
+
+            font-weight: bold;
+
+            color: #334155;
+        }
+
+
+        /* =========================
+           Inputs
+        ========================= */
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="url"],
+        input[type="file"],
+        select,
+        textarea {
+
+            width: 100%;
+
+            padding: 11px 12px;
+
+            border: 1px solid #cbd5e1;
+
+            border-radius: 7px;
+
+            background: white;
+
+            color: #1e293b;
+
+            font-size: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+
+            min-height: 120px;
+
+            line-height: 1.5;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+
+            outline: none;
+
+            border-color: #2563eb;
+
+            box-shadow:
+                0 0 0 2px rgba(37, 99, 235, 0.10);
+        }
+
+
+        /* =========================
+           Radio Buttons
+        ========================= */
+
+        .options {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 25px;
+
+            margin: 8px 0 20px 0;
+        }
+
+        .options label {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin: 0;
+
+            font-weight: normal;
+
+            color: #334155;
+
+            cursor: pointer;
+        }
+
+        .options input[type="radio"] {
+
+            width: 17px;
+
+            height: 17px;
+
+            margin: 0;
+
+            padding: 0;
+
+            accent-color: #2563eb;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           File Information
+        ========================= */
+
+        form > p {
+
+            margin-top: 8px;
+
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           Buttons
+        ========================= */
+
+        .buttons {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-top: 30px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .buttons button,
+        .buttons .button {
+
+            display: inline-block;
+
+            padding: 11px 20px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            text-decoration: none;
+
+            cursor: pointer;
+        }
+
+        .buttons button {
+
+            background: #2563eb;
+
+            color: white;
+        }
+
+        .buttons button:hover {
+
+            background: #1d4ed8;
+        }
+
+        .buttons .button {
+
+            background: #e2e8f0;
+
+            color: #334155;
+        }
+
+        .buttons .button:hover {
+
+            background: #cbd5e1;
+
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           Responsive
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .container {
+
+                width: 95%;
+
+                margin: 20px auto;
+            }
+
+            form {
+
+                padding: 22px;
+            }
+
+            .options {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 12px;
+            }
+
+            .buttons {
+
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+            .buttons button,
+            .buttons .button {
+
+                width: 100%;
+
+                text-align: center;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <!-- =========================
+         Header
+    ========================= -->
+
+    <div class="header">
+
+        <h1>
+            Edit Profile
+        </h1>
+
+        <p>
+            Update your alumni information
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         Form
+    ========================= -->
+
+    <form
+        action="/edit-profile"
+        method="POST"
+        enctype="multipart/form-data"
+    >
+
+
+        <!-- ================= PERSONAL ================= -->
+
+        <h2>
+            Personal Information
+        </h2>
+
+
+        <label>
+            Full Name
+        </label>
+
+        <input
+            type="text"
+            name="full_name"
+            value="<%= user.full_name %>"
+            required
+        >
+
+
+        <label>
+            Phone
+        </label>
+
+        <input
+            type="tel"
+            name="phone"
+            value="<%= user.phone || '' %>"
+        >
+
+
+        <label>
+            Gender
+        </label>
+
+        <div class="options">
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="gender"
+                    value="Male"
+                    <%= user.gender == "Male" ? "checked" : "" %>
+                >
+
+                Male
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="gender"
+                    value="Female"
+                    <%= user.gender == "Female" ? "checked" : "" %>
+                >
+
+                Female
+
+            </label>
+
+        </div>
+
+
+        <!-- ================= ACADEMIC ================= -->
+
+        <h2>
+            Academic Information
+        </h2>
+
+
+        <label>
+            Department
+        </label>
+
+        <select name="department">
+
+            <option value="">
+                Select Department
+            </option>
+
+            <option
+                value="Computer Science"
+                <%= user.department == "Computer Science" ? "selected" : "" %>
+            >
+                Computer Science
+            </option>
+
+            <option
+                value="Information Technology"
+                <%= user.department == "Information Technology" ? "selected" : "" %>
+            >
+                Information Technology
+            </option>
+
+            <option
+                value="Software Engineering"
+                <%= user.department == "Software Engineering" ? "selected" : "" %>
+            >
+                Software Engineering
+            </option>
+
+            <option
+                value="Electrical Engineering"
+                <%= user.department == "Electrical Engineering" ? "selected" : "" %>
+            >
+                Electrical Engineering
+            </option>
+
+            <option
+                value="Business Administration"
+                <%= user.department == "Business Administration" ? "selected" : "" %>
+            >
+                Business Administration
+            </option>
+
+        </select>
+
+
+        <label>
+            Degree Program
+        </label>
+
+        <div class="options">
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="degree_program"
+                    value="BS"
+                    <%= user.degree_program == "BS" ? "checked" : "" %>
+                >
+
+                BS
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="degree_program"
+                    value="MS"
+                    <%= user.degree_program == "MS" ? "checked" : "" %>
+                >
+
+                MS
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="degree_program"
+                    value="PhD"
+                    <%= user.degree_program == "PhD" ? "checked" : "" %>
+                >
+
+                PhD
+
+            </label>
+
+        </div>
+
+
+        <label>
+            Graduation Year
+        </label>
+
+        <input
+            type="number"
+            name="graduation_year"
+            value="<%= user.graduation_year || '' %>"
+        >
+
+
+        <label>
+            CGPA
+        </label>
+
+        <input
+            type="number"
+            name="cgpa"
+            min="0"
+            max="4"
+            step="0.01"
+            value="<%= user.cgpa || '' %>"
+        >
+
+
+        <!-- ================= PROFESSIONAL ================= -->
+
+        <h2>
+            Professional Information
+        </h2>
+
+
+        <label>
+            Employment Status
+        </label>
+
+        <select name="employment_status">
+
+            <option value="">
+                Select Status
+            </option>
+
+            <option
+                value="Student"
+                <%= user.employment_status == "Student" ? "selected" : "" %>
+            >
+                Student
+            </option>
+
+            <option
+                value="Employed"
+                <%= user.employment_status == "Employed" ? "selected" : "" %>
+            >
+                Employed
+            </option>
+
+            <option
+                value="Self Employed"
+                <%= user.employment_status == "Self Employed" ? "selected" : "" %>
+            >
+                Self Employed
+            </option>
+
+            <option
+                value="Unemployed"
+                <%= user.employment_status == "Unemployed" ? "selected" : "" %>
+            >
+                Unemployed
+            </option>
+
+        </select>
+
+
+        <label>
+            Company / Organization
+        </label>
+
+        <input
+            type="text"
+            name="company"
+            value="<%= user.company || '' %>"
+        >
+
+
+        <label>
+            Job Title
+        </label>
+
+        <input
+            type="text"
+            name="job_title"
+            value="<%= user.job_title || '' %>"
+        >
+
+
+        <label>
+            Skills
+        </label>
+
+        <input
+            type="text"
+            name="skills"
+            value="<%= user.skills || '' %>"
+            placeholder="HTML, CSS, JavaScript"
+        >
+
+
+        <!-- ================= PROFILE ================= -->
+
+        <h2>
+            Profile Information
+        </h2>
+
+
+        <label>
+            LinkedIn Profile
+        </label>
+
+        <input
+            type="url"
+            name="linkedin"
+            value="<%= user.linkedin || '' %>"
+        >
+
+
+        <label>
+            Short Bio
+        </label>
+
+        <textarea
+            name="bio"
+            rows="5"
+        ><%= user.bio || '' %></textarea>
+
+
+        <!-- ================= IMAGE ================= -->
+
+        <h2>
+            Profile Image
+        </h2>
+
+
+        <label>
+            Change Profile Image
+        </label>
+
+        <input
+            type="file"
+            name="profile_image"
+            accept="image/png,image/jpeg,image/gif"
+        >
+
+        <p>
+            Leave empty if you want to keep your current image.
+        </p>
+
+
+        <!-- ================= BUTTONS ================= -->
+
+        <div class="buttons">
+
+            <button type="submit">
+                Save Changes
+            </button>
+
+            <a
+                href="/dashboard"
+                class="button"
+            >
+                Cancel
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Job Opportunities</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .header {
+            background-color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .header h1 {
+            margin: 0 0 10px;
+            color: #1e3a8a;
+        }
+
+        .header p {
+            margin: 0;
+            color: #64748b;
+            font-size: 16px;
+        }
+
+        .job-card {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #2563eb;
+        }
+
+        .job-card h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #1e3a8a;
+        }
+
+        .job-card p {
+            margin: 10px 0;
+            line-height: 1.6;
+            color: #475569;
+        }
+
+        .job-card strong {
+            color: #1e293b;
+        }
+
+        .dashboard-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 18px;
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .dashboard-button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .buttons {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 11px 20px;
+            background-color: #475569;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background-color: #334155;
+        }
+
+        .no-jobs {
+            background-color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+            color: #64748b;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .header,
+            .job-card {
+                padding: 20px;
+            }
+
+            .job-card h2 {
+                font-size: 22px;
+            }
+
+            .dashboard-button,
+            .button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Job Opportunities</h1>
+        <p>Find opportunities available for alumni.</p>
+    </div>
+
+    <% if (jobs.length === 0) { %>
+
+        <div class="no-jobs">
+            <p>No job opportunities available.</p>
+        </div>
+
+    <% } %>
+
+
+    <% jobs.forEach(job => { %>
+
+        <div class="job-card">
+
+            <h2>
+                <%= job.title %>
+            </h2>
+
+            <p>
+                <strong>Company:</strong>
+                <%= job.company %>
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                <%= job.location || "Not specified" %>
+            </p>
+
+            <p>
+                <strong>Job Type:</strong>
+                <%= job.job_type || "Not specified" %>
+            </p>
+
+            <p>
+                <strong>Description:</strong>
+                <%= job.description %>
+            </p>
+
+            <p>
+                <strong>Requirements:</strong>
+                <%= job.requirements %>
+            </p>
+
+            <a
+                href="/jobs/<%= job.id %>"
+                class="dashboard-button"
+            >
+                View Job
+            </a>
+
+        </div>
+
+    <% }); %>
+
+
+    <div class="buttons">
+
+        <a
+            href="/dashboard"
+            class="button"
+        >
+            Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

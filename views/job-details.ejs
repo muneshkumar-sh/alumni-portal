@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title><%= job.title %></title>
+
+
+    <style>
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background: #f1f5f9;
+
+            color: #1e293b;
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            width: 92%;
+            max-width: 900px;
+
+            margin: 40px auto;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            background: white;
+
+            padding: 28px 30px;
+
+            border-radius: 12px;
+
+            margin-bottom: 20px;
+
+            text-align: center;
+
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .header h1 {
+            margin: 0 0 8px 0;
+
+            color: #1e3a8a;
+
+            font-size: 30px;
+        }
+
+        .header p {
+            margin: 0;
+
+            color: #64748b;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           JOB DETAILS
+        ========================= */
+
+        .job-details {
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* =========================
+           JOB INFORMATION
+        ========================= */
+
+        .job-info {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            background: #f8fafc;
+
+            border: 1px solid #e2e8f0;
+
+            padding: 15px;
+
+            border-radius: 8px;
+        }
+
+        .info-box strong {
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #475569;
+
+            font-size: 13px;
+        }
+
+        .info-box span {
+            color: #1e293b;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           CONTENT SECTIONS
+        ========================= */
+
+        .job-details h2 {
+            margin-top: 30px;
+
+            margin-bottom: 12px;
+
+            padding-bottom: 8px;
+
+            border-bottom: 2px solid #e2e8f0;
+
+            color: #1e3a8a;
+
+            font-size: 20px;
+        }
+
+        .job-details h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .job-description {
+            color: #475569;
+
+            line-height: 1.7;
+
+            white-space: pre-line;
+        }
+
+
+        /* =========================
+           APPLY BUTTON
+        ========================= */
+
+        .apply-form {
+            margin-top: 30px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .apply-btn {
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #2563eb;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .apply-btn:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* =========================
+           NAVIGATION BUTTONS
+        ========================= */
+
+        .buttons {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 25px;
+
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding: 11px 18px;
+
+            border-radius: 6px;
+
+            background: #e2e8f0;
+
+            color: #334155;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: #cbd5e1;
+
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .container {
+                width: 95%;
+
+                margin: 20px auto;
+            }
+
+            .job-details {
+                padding: 22px;
+            }
+
+            .job-info {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .button {
+                text-align: center;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <div class="header">
+
+        <h1>
+            <%= job.title %>
+        </h1>
+
+        <p>
+            <%= job.company %>
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         JOB DETAILS
+    ========================= -->
+
+    <div class="job-details">
+
+
+        <!-- Job Information -->
+
+        <div class="job-info">
+
+
+            <div class="info-box">
+
+                <strong>
+                    Company
+                </strong>
+
+                <span>
+                    <%= job.company %>
+                </span>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <strong>
+                    Location
+                </strong>
+
+                <span>
+                    <%= job.location || "Not specified" %>
+                </span>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <strong>
+                    Job Type
+                </strong>
+
+                <span>
+                    <%= job.job_type || "Not specified" %>
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- Description -->
+
+        <h2>
+            Description
+        </h2>
+
+        <p class="job-description">
+            <%= job.description %>
+        </p>
+
+
+        <!-- Requirements -->
+
+        <h2>
+            Requirements
+        </h2>
+
+        <p class="job-description">
+            <%= job.requirements %>
+        </p>
+
+
+        <!-- Apply -->
+
+        <form
+            action="/jobs/<%= job.id %>/apply"
+            method="POST"
+            class="apply-form"
+        >
+
+            <button
+                type="submit"
+                class="apply-btn"
+            >
+                Apply for Job
+            </button>
+
+        </form>
+
+
+        <!-- Navigation -->
+
+        <div class="buttons">
+
+            <a
+                href="/jobs"
+                class="button"
+            >
+                Back to Jobs
+            </a>
+
+
+            <a
+                href="/dashboard"
+                class="button"
+            >
+                Dashboard
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

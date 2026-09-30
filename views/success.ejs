@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registration Successful</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .success-container {
+            background-color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background-color: #16a34a;
+            color: white;
+
+            border-radius: 50%;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .success-container h1 {
+            margin: 0 0 20px;
+            color: #166534;
+            font-size: 30px;
+        }
+
+        .success-container > p {
+            margin: 10px 0;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .success-container strong {
+            color: #1e293b;
+        }
+
+        .registration-info {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .registration-info p {
+            margin: 10px 0;
+            color: #475569;
+        }
+
+        .buttons {
+            margin-top: 25px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 22px;
+
+            background-color: #2563eb;
+            color: white;
+
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background-color: #1d4ed8;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .success-container {
+                padding: 30px 20px;
+            }
+
+            .success-container h1 {
+                font-size: 25px;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container success-container">
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+    <h1>Registration Successful!</h1>
+
+    <p>
+        Thank you,
+        <strong><%= name %></strong>.
+    </p>
+
+    <p>
+        Your alumni account has been created successfully.
+    </p>
+
+    <div class="registration-info">
+
+        <p>
+            <strong>Registration ID:</strong>
+            <%= id %>
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            <%= email %>
+        </p>
+
+    </div>
+
+    <div class="buttons">
+
+        <a href="/" class="button">
+            Back to Login
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

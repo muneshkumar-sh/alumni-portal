@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Alumni Dashboard</title>
+
+    <style>
+        /* =========================
+       General Page
+    ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+
+        /* =========================
+       Dashboard Header
+    ========================= */
+
+        .dashboard-header {
+            background: #ffffff;
+            padding: 25px 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .dashboard-header h1 {
+            margin: 0 0 8px 0;
+            font-size: 28px;
+            color: #1e3a8a;
+            text-align: left;
+        }
+
+        .dashboard-header p {
+            margin: 0;
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        .logout-btn {
+            display: inline-block;
+            background: #dc2626;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .logout-btn:hover {
+            background: #b91c1c;
+        }
+
+
+        /* =========================
+       Profile Section
+    ========================= */
+
+        .profile-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .profile-section h2 {
+            margin: 0 0 25px 0;
+            text-align: center;
+            font-size: 25px;
+            color: #1e3a8a;
+        }
+
+        .profile-section h3 {
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+
+            font-size: 19px;
+            color: #334155;
+
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+
+        /* =========================
+       Profile Image
+    ========================= */
+
+        .profile-image {
+            width: 140px;
+            height: 140px;
+
+            display: block;
+            margin: 0 auto 25px auto;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 4px solid #2563eb;
+
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+        }
+
+
+        /* =========================
+       Information Grid
+    ========================= */
+
+        .profile-info {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+        }
+
+
+        /* =========================
+       Information Boxes
+    ========================= */
+
+        .info-box {
+            background: #f8fafc;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 8px;
+
+            padding: 16px 18px;
+
+            min-height: 70px;
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+
+            gap: 7px;
+        }
+
+        .info-box strong {
+            font-size: 14px;
+            color: #475569;
+        }
+
+        .info-box span {
+            font-size: 15px;
+            color: #1e293b;
+
+            word-break: break-word;
+        }
+
+        .info-box a {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .info-box a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+       Applications Summary
+    ========================= */
+
+        .dashboard-summary {
+            margin-top: 25px;
+        }
+
+        .summary-card {
+            background: #ffffff;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .summary-card h3 {
+            margin: 0 0 10px 0;
+            color: #334155;
+        }
+
+        .summary-number {
+            font-size: 42px;
+            font-weight: bold;
+            color: #2563eb;
+            margin: 10px 0 18px 0;
+        }
+
+
+        /* =========================
+       Buttons
+    ========================= */
+
+        .primary-btn,
+        .action-btn {
+            display: inline-block;
+
+            padding: 11px 18px;
+
+            background: #2563eb;
+            color: white;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            transition: background 0.2s ease;
+        }
+
+        .primary-btn:hover,
+        .action-btn:hover {
+            background: #1d4ed8;
+            text-decoration: none;
+        }
+
+
+        /* =========================
+       Dashboard Actions
+    ========================= */
+
+        .dashboard-actions {
+            margin-top: 25px;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+
+        /* =========================
+       Footer
+    ========================= */
+
+        .footer {
+            margin-top: 35px;
+            padding: 20px;
+
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+       Responsive Design
+    ========================= */
+
+        @media (max-width: 700px) {
+
+            .container {
+                width: 95%;
+                margin: 20px auto;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .dashboard-header h1 {
+                text-align: center;
+                font-size: 23px;
+            }
+
+            .profile-section {
+                padding: 20px;
+            }
+
+            .profile-info {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-actions {
+                flex-direction: column;
+            }
+
+            .action-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <div class="dashboard-header">
+
+            <div>
+                <h1>
+                    Welcome, <%= user.full_name %>
+                </h1>
+
+                <p>
+                    Welcome to your Alumni Portal dashboard.
+                </p>
+            </div>
+
+            <a href="/logout" class="logout-btn">
+                Logout
+            </a>
+
+        </div>
+
+
+        <!-- Profile -->
+        <div class="profile-section">
+
+            <h2>My Profile</h2>
+
+            <% if (user.profile_image) { %>
+
+                <img src="<%= user.profile_image %>" alt="Profile Image" class="profile-image">
+
+                <% } %>
+
+
+                    <!-- Personal Information -->
+                    <h3>Personal Information</h3>
+
+                    <div class="profile-info">
+
+                        <div class="info-box">
+                            <strong>Full Name</strong>
+                            <span>
+                                <%= user.full_name %>
+                            </span>
+                        </div>
+
+                        <div class="info-box">
+                            <strong>Email</strong>
+                            <span>
+                                <%= user.email %>
+                            </span>
+                        </div>
+
+                        <div class="info-box">
+                            <strong>Phone</strong>
+                            <span>
+                                <%= user.phone || "Not provided" %>
+                            </span>
+                        </div>
+
+                        <div class="info-box">
+                            <strong>Gender</strong>
+                            <span>
+                                <%= user.gender || "Not provided" %>
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Academic Information -->
+                    <h3>Academic Information</h3>
+
+                    <div class="profile-info">
+
+                        <div class="info-box">
+                            <strong>Department</strong>
+                            <span>
+                                <%= user.department || "Not provided" %>
+                            </span>
+                        </div>
+
+                        <div class="info-box">
+                            <strong>Degree Program</strong>
+                            <span>
+                                <%= user.degree_program || "Not provided" %>
+                            </span>
+                        </div>
+
+                        <div class="info-box">
+                            <strong>Graduation Year</strong>
+                            <span>
+                                <%= user.graduation_year || "Not provided" %>
+                            </span>
+                        </div>
+
+                        <div class="info-box">
+                            <strong>CGPA</strong>
+                            <span>
+                                <%= user.cgpa || "Not provided" %>
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Professional Information -->
+                    <h3>Professional Information</h3>
+
+                    <div class="profile-info">
+
+                        <div class="info-box">
+                            <strong>Employment Status</strong>
+                            <span>
+                                <%= user.employment_status || "Not provided" %>
+                            </span>
+                        </div>
+
+                        <div class="info-box">
+                            <strong>Company</strong>
+                            <span>
+                                <%= user.company || "Not provided" %>
+                            </span>
+                        </div>
+
+                        <div class="info-box">
+                            <strong>Job Title</strong>
+                            <span>
+                                <%= user.job_title || "Not provided" %>
+                            </span>
+                        </div>
+
+                        <div class="info-box">
+                            <strong>Skills</strong>
+                            <span>
+                                <%= user.skills || "Not provided" %>
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Profile Details -->
+                    <h3>Profile Details</h3>
+
+                    <div class="profile-info">
+
+                        <div class="info-box">
+
+                            <strong>LinkedIn</strong>
+
+                            <% if (user.linkedin) { %>
+
+                                <a href="<%= user.linkedin %>" target="_blank">
+                                    View LinkedIn Profile
+                                </a>
+
+                                <% } else { %>
+
+                                    <span>Not provided</span>
+
+                                    <% } %>
+
+                        </div>
+
+
+                        <div class="info-box">
+
+                            <strong>Bio</strong>
+
+                            <span>
+                                <%= user.bio || "Not provided" %>
+                            </span>
+
+                        </div>
+
+                    </div>
+
+        </div>
+
+
+        <!-- Applications Summary -->
+        <div class="dashboard-summary">
+
+            <div class="summary-card">
+
+                <h3>My Applications</h3>
+
+                <div class="summary-number">
+                    <%= totalApplications %>
+                </div>
+
+                <a href="/applications" class="primary-btn">
+                    View Applications
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Dashboard Actions -->
+        <div class="dashboard-actions">
+
+            <a href="/edit-profile" class="action-btn">
+                Edit Profile
+            </a>
+
+            <a href="/jobs" class="action-btn">
+                Browse Jobs
+            </a>
+
+            <a href="/applications" class="action-btn">
+                My Applications
+            </a>
+
+        </div>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+
+            <p>
+                Alumni Portal © 2026
+            </p>
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
